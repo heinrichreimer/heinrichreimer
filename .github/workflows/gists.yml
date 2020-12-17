@@ -1,0 +1,22 @@
+name: "Update Gists"
+on:
+  schedule:
+  - cron: '0 * * * *'
+  push:
+    branches: master
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "🧰 Install JDK"
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name:
+      run: npx github-stats-box
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+        GIST_ID: 1bf18c802acc59b05d0bcfd219a307ff
+        ALL_COMMITS: false
+        K_FORMAT: true
