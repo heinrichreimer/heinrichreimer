@@ -1,13 +1,13 @@
 name: "Update Gists"
 on:
   schedule:
-  - cron: '5 * * * *'
+  - cron: '* * * * *'
   push:
     branches: master
 
 jobs:
   covid:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - name: "✏️ Update COVID-19 stats Gist"
       uses: puf17640/covid-box@cbf66c3f5ed15fa6806944c3c731a27680fa6b7a
@@ -17,7 +17,7 @@ jobs:
         GIST_ID: 062b04538d38ddecd44060a09142886a
         COUNTRY: "DE"
   github-stats:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - name: "🧰 Install Node"
       uses: actions/setup-node@v1
