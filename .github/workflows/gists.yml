@@ -6,17 +6,26 @@ on:
     branches: master
 
 jobs:
-  run:
+  covid:
     runs-on: ubuntu-latest
     steps:
-    - name: "🧰 Install JDK"
+    - name: "✏️ Update COVID-19 stats Gist"
+      uses: puf17640/covid-box@cbf66c3f5ed15fa6806944c3c731a27680fa6b7a
+      env:
+        GH_PAT: ${{ secrets.GIST_TOKEN  }}
+        GIST_ID: 062b04538d38ddecd44060a09142886a
+        COUNTRY: "DE"
+  github-stats:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "🧰 Install Node"
       uses: actions/setup-node@v1
       with:
         node-version: 12
-    - name:
+    - name: "✏️ Update GitHub stats Gist"
       run: npx github-stats-box
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+        GH_TOKEN: ${{ secrets.GIST_TOKEN  }}
         GIST_ID: 1bf18c802acc59b05d0bcfd219a307ff
         ALL_COMMITS: false
         K_FORMAT: true
