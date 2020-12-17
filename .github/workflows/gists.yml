@@ -1,9 +1,9 @@
 name: "Update Gists"
 on:
-  schedule:
-  - cron: '* * * * *'
   push:
     branches: master
+  schedule:
+  - cron: '*/15 * * * *'
 
 jobs:
   covid:
@@ -19,7 +19,7 @@ jobs:
   github-stats:
     runs-on: ubuntu-20.04
     steps:
-    - name: "🧰 Install Node"
+    - name: "🧰 Install Node.js"
       uses: actions/setup-node@v1
       with:
         node-version: 12
