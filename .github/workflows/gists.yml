@@ -14,6 +14,7 @@ jobs:
       if: github.event_name == 'schedule'
       env:
         GH_PAT: ${{ secrets.GIST_TOKEN  }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GIST_ID: 062b04538d38ddecd44060a09142886a
         COUNTRY: "DE"
   github-stats:
